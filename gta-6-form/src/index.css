@@ -35,6 +35,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	font-family: 'Roboto Slab', serif;
+	background: url('/bg.png') center center / cover no-repeat;
 }
 
 h1 {
