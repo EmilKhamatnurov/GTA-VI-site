@@ -1,20 +1,31 @@
-import Input from '../../components/Input'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from './Home.module.css'
 
+interface IFormState {
+	name: string
+	email: string
+}
+
 function Home() {
-	function logi(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-		event.preventDefault()
-		console.log('Привет')
+	const { register, handleSubmit } = useForm<IFormState>()
+	const isSuccess = false
+
+	const onSubmit: SubmitHandler<IFormState> = data => {
+		console.log(data)
 	}
 	return (
 		<div className={styles.wrapper}>
-			<form>
-				<h1>GTA 6 - Оставь заявку</h1>
-				<Input type='name' placeholder='Введите имя' />
-				<Input type='email' placeholder='Введите почту' />
-				{/* <button
-					onClick={logi}
-				>Хочу ГТА!</button> */}
+			<form onSubmit={handleSubmit(onSubmit)}>
+				{isSuccess ? (
+					<div className={styles.success}>Форма отправлена!</div>
+				) : (
+					<>
+						<h1>GTA 6 - Оставь заявку</h1>
+						<input type='name' placeholder='Имя' {...register('name')} />
+						<input type='name' placeholder='Почта' {...register('email')} />
+						<button>Хочу ГТА!</button>
+					</>
+				)}
 			</form>
 		</div>
 	)

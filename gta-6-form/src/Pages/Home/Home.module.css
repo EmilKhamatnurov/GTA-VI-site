@@ -3,15 +3,51 @@
 }
 
 .wrapper > form {
-	@apply w-64 p-3 absolute left-10 top-1;
+	@apply w-max p-3 absolute left-5 top-5 bg-slate-400 bg-opacity-30;
+	animation: slideIn 1.5s ease-in-out;
 }
 
 .wrapper > form > h1 {
-	@apply text-2xl;
+	@apply text-2xl mb-3;
 }
 
 .wrapper > form > input {
+	@apply block py-1 px-3 mb-2 w-full bg-gray-900 bg-opacity-30 outline-0 text-white placeholder:text-white/70;
+	transition: bacground-opaciry 0.4s linear;
+}
+.wrapper > form > input:focus {
+	@apply bg-opacity-60;
 }
 
 .wrapper > form > button {
+	@apply text-lg uppercase py-1 px-4 border inline-block mt-4;
+	transition: box-shadow 0.4s linear, background-color 0.4s linear;
+}
+.wrapper > form > button:hover {
+	@apply bg-white/10;
+}
+
+.success {
+	@apply text-2xl font-medium text-green-400 m-auto;
+	animation: fade 0.4s;
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-110%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
